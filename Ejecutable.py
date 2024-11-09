@@ -1,5 +1,7 @@
 #Clases:
 
+#Clase Detector
+
 class Detector:
     def __init__(self, nombre):
         self.nombre = nombre
