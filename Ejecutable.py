@@ -1,3 +1,5 @@
+#Clases:
+
 class Detector:
     def __init__(self, nombre):
         self.nombre = nombre
@@ -55,6 +57,8 @@ class Mutador:
     def crear_mutante(self):
         pass
     
+#Clase Radiacion    
+    
 class Radiacion(Mutador):
     def __init__(self, base_nitrogenada):
         super().__init__(base_nitrogenada)
@@ -73,10 +77,12 @@ class Radiacion(Mutador):
             print("Error: Posición fuera de rango o tipo de datos incorrecto.")
             return matriz_ADN
         
-
+#Clase Virus
 
 class Virus(Mutador):
     pass
+
+#Clase Sanador 
 
 class Sanador:
     pass
@@ -84,8 +90,13 @@ class Sanador:
 detector=Detector("Detector")
 
 
+### Interfaz Laboratorio ###
+
+
 print("----------------------------------\n-Bienvenido al laboratorio de ADN-\n----------------------------------\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
 print("Nos encantaria saber con que cadena de ADN te podemos ayudar, inteoducir dicha cadena como aparese en el siguiente ejemplo:\n *GTACGT CTGATA AGGCAG GCATCG TGAGCG GCTACT*\nCada cadena debe estar compuesta por 6 bases nitrogenadas y separadas por un espacio en blanco al completar las 6.\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+
+#Ingresar Cadena de ADN
 
 while True:
     Cad_ADN=input("Ingrese su Cadena de ADN:")
@@ -96,6 +107,7 @@ while True:
         break
     else:
         print("*********************************************\nError: Su cadena esta mal formulada revise el ejemplo proporcionado y compruebe si no tiene uno de los siguientes errores:\n  * Caracteres permitidos C, A, T y G.\n  * Son 6 cadenas de 6 caracteres separadas por un espacio\n*********************************************")
+
 print("Matriz de ADN válida:")
 for i in range(len(matriz_ADN)):
     print("\t".join(matriz_ADN[i]))
@@ -104,6 +116,7 @@ print("""Que desea hacer con la cadena armada:
       Mutar Cadena de ADN Escriba \"M\"
       Sanar Cadena de ADN(aclaracion tiene que estar mutado) \"S\"
       """)
+
 while True:
     opcion=input()
     opcion=opcion.upper()
