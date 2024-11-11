@@ -1,3 +1,4 @@
+#Importando clases
 from Clases import *
 
 detector=Detector("Detector")
