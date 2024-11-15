@@ -85,7 +85,41 @@ class Radiacion(Mutador):
 #Clase Virus
 
 class Virus(Mutador):
-    pass
+    def __init__(self, base_nitrogenada):
+        super().__init__("Virus")
+        self.tipo_mutacion = "Diagonal"
+        self.base_nitrogenada = base_nitrogenada
+
+    def crear_mutante(self, matriz_adn, posicion_inicial):
+        """
+        Crea una mutación diagonal en la matriz de ADN, repitiendo la base nitrogenada 4 veces.
+
+        Argumentos:
+        matriz_adn -- lista de strings representando la matriz de ADN.
+        posicion_inicial -- tupla (fila, columna) indicando dónde empezar la mutación.
+
+        Retorna:
+        La matriz de ADN con la mutación diagonal aplicada, o la matriz original si hubo un error.
+        """
+        fila, columna = posicion_inicial
+
+        try:
+            # Verificar que la mutación cabe en una diagonal (requiere espacio de 4 posiciones)
+            if fila + 3 < 6 and columna + 3 < 6:
+                # Crear la mutación diagonal
+                for i in range(4):
+                    # Convertir la fila en una lista para modificarla
+                    fila_actual = list(matriz_adn[fila + i])
+                    fila_actual[columna + i] = self.base_nitrogenada
+                    # Volver a unir la fila y actualizar en la matriz
+                    matriz_adn[fila + i] = "".join(fila_actual)
+                return matriz_adn
+            else:
+                print("Error: la posición inicial no permite una mutación diagonal completa.")
+                return matriz_adn  # Retorna la matriz sin cambios si no cabe la mutación
+        except IndexError as e:
+            print(f"Error de índice al intentar crear la mutación: {e}")
+            return matriz_adn  # Retorna la matriz sin cambios si ocurre un error
 
 #Clase Sanador 
 

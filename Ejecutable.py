@@ -44,7 +44,34 @@ while True:
             case 0:print("No se ha detectadio ninguna mutación.")
         
     elif opcion == "M":
-        pass
+        print("""Que tipo de mutación desea ingresar: 
+            Virus \"V\"
+            Radiación \"R\"
+            """)
+        tipo_mutacion=input()
+        tipo_mutacion=tipo_mutacion.upper()
+        if tipo_mutacion == "V":
+            # Solicitar detalles para realizar una mutación diagonal con Virus
+            fila = int(input("Ingrese la fila de inicio para la mutación diagonal (0-2): "))
+            col = int(input("Ingrese la columna de inicio para la mutación diagonal (0-2): "))
+            base_nitrogenada = input("Ingrese la base nitrogenada que se repetirá ('A', 'T', 'G', 'C'): ").upper()
+
+            # Validar la base nitrogenada
+            if base_nitrogenada not in ["A", "T", "G", "C"]:
+                print("Base nitrogenada no válida. Debe ser 'A', 'T', 'G' o 'C'.")
+            else:
+            # Crear una instancia de la clase Virus
+                virus = Virus(base_nitrogenada)
+
+           # Mutar la matriz de ADN con la clase Virus
+                matriz_ADN = virus.crear_mutante(matriz_ADN, (fila, col))
+
+           # Mostrar la matriz mutada
+                print("Matriz de ADN después de la mutación diagonal con Virus:")
+                for fila in matriz_ADN:
+                    print("\t".join(fila))
+        elif tipo_mutacion=="R":
+            pass
         
     elif opcion == "S":
         sanador = Sanador()
