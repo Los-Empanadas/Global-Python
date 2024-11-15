@@ -36,6 +36,7 @@ print("""Que desea hacer con la cadena armada:
 while True:
     opcion=input()
     opcion=opcion.upper()
+    time.sleep(0.3)
     if opcion == "D":
         match detector.detectar_mutantes(matriz_ADN):
             case 1:print('Se ha detectado una mutación de tipo "Radiación"(Horizontal).')
@@ -55,12 +56,12 @@ while True:
             fila = int(input("Ingrese la fila de inicio para la mutación diagonal (0-2): "))
             col = int(input("Ingrese la columna de inicio para la mutación diagonal (0-2): "))
             base_nitrogenada = input("Ingrese la base nitrogenada que se repetirá ('A', 'T', 'G', 'C'): ").upper()
-
             # Validar la base nitrogenada
             if base_nitrogenada not in ["A", "T", "G", "C"]:
                 print("Base nitrogenada no válida. Debe ser 'A', 'T', 'G' o 'C'.")
             else:
-            # Crear una instancia de la clase Virus
+                time.sleep(0.3)
+                # Crear una instancia de la clase Virus
                 virus = Virus(base_nitrogenada)
 
            # Mutar la matriz de ADN con la clase Virus
@@ -77,6 +78,7 @@ while True:
         sanador = Sanador()
         matriz_ADN = sanador.sanar_mutantes(matriz_ADN,detector)
         print("Nueva Matriz de ADN:")
+        time.sleep(0.3)
         for i in range(len(matriz_ADN)):
             print("\t".join(matriz_ADN[i]))
     elif opcion == "Q":
