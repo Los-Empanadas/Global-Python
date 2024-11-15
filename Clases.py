@@ -1,3 +1,4 @@
+import random, time
 #Clases:
 
 #Clase Detector
@@ -54,16 +55,18 @@ class Detector:
         return False
 
 class Mutador: 
-    def __init__(self,base_nitrogenada):
-        pass
+    def __init__(self,nombre):
+        self.nombre=nombre
+    
     def crear_mutante(self):
         pass
     
 #Clase Radiacion    
     
 class Radiacion(Mutador):
-    def __init__(self, base_nitrogenada):
-        super().__init__(base_nitrogenada)
+    def __init__(self, nombre):
+        super().__init__(nombre)
+        
     
     def crear_mutante(self,matriz_ADN,posicion_inicial,orientacion):
         try:
@@ -87,6 +90,45 @@ class Virus(Mutador):
 #Clase Sanador 
 
 class Sanador:
-    pass
+    def init(self):
+        self.bases = ["A","T","G","C"]  # Bases nitrogenadas posibles
 
+    def sanar_mutantes(self, matriz_adn, detector):
+        """
+        Revisa la matriz de ADN para ver si tiene mutaciones.
+        Si hay mutaciones, genera una nueva matriz de ADN sin mutaciones.
 
+        Argumentos:
+        matriz_adn -- lista de strings representando la matriz de ADN.
+        detector -- instancia de la clase Detector para usar su método de detección.
+
+        Retorna:
+        Una nueva matriz sin mutaciones si había mutantes, o la matriz original si no los había.
+        """
+        # Verificar si la matriz de ADN actual tiene mutantes
+        if detector.detectar_mutantes(matriz_adn):
+            print("Mutaciones detectadas. Generando nueva secuencia de ADN sin mutaciones.")
+            # Generar una nueva matriz de ADN sin mutantes
+            matriz_adn_nueva = self.generar_adn_sin_mutantes(detector)
+            return matriz_adn_nueva
+        else:
+            print("No se detectaron mutaciones. La matriz de ADN está intacta.")
+            return matriz_adn  # No hay mutantes, retornamos la matriz original
+
+    def generar_adn_sin_mutantes(self, detector):
+        """
+        Genera una nueva matriz de ADN de 6x6 sin mutaciones.
+
+        Argumentos:
+        detector -- instancia de la clase Detector para verificar la nueva matriz.
+
+        Retorna:
+        Una matriz de ADN sin mutantes.
+        """
+        self.bases = ["A","T","G","C"]
+        while True:
+            # Crear una matriz aleatoria de 6x6 sin mutantes
+            matriz_adn = ["".join(random.choice(self.bases) for _ in range(6)) for _ in range(6)]
+            # Verificar si la nueva matriz tiene mutantes
+            if not detector.detectar_mutantes(matriz_adn):
+                return matriz_adn

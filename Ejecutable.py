@@ -1,13 +1,15 @@
 #Importando clases
 from Clases import *
-
+import time
 detector=Detector("Detector")
+
+mutador=Radiacion("Mutador")
 
 ### Interfaz Laboratorio ###
 
 
 print("----------------------------------\n-Bienvenido al laboratorio de ADN-\n----------------------------------\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
-print("Nos encantaria saber con que cadena de ADN te podemos ayudar, inteoducir dicha cadena como aparese en el siguiente ejemplo:\n *GTACGT CTGATA AGGCAG GCATCG TGAGCG GCTACT*\nCada cadena debe estar compuesta por 6 bases nitrogenadas y separadas por un espacio en blanco al completar las 6.\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+print("Nos encantaria saber con que cadena de ADN te podemos ayudar, introducir dicha cadena como aparece en el siguiente ejemplo:\n *GTACGT CTGATA AGGCAG GCATCG TGAGCG GCTACT*\nCada cadena debe estar compuesta por 6 bases nitrogenadas y separadas por un espacio en blanco al completar las 6.\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
 
 #Ingresar Cadena de ADN
 
@@ -27,7 +29,8 @@ for i in range(len(matriz_ADN)):
 print("""Que desea hacer con la cadena armada: 
       Detectar Mutacion Escriba \"D\"
       Mutar Cadena de ADN Escriba \"M\"
-      Sanar Cadena de ADN(aclaracion tiene que estar mutado) \"S\"
+      Sanar Cadena de ADN(Debe estar mutado) \"S\"
+      Salir \"Q\"
       """)
 
 while True:
@@ -39,11 +42,27 @@ while True:
             case 2:print('Se ha detectado una mutación de tipo "Radiación"(Vertical).')
             case 3:print('Se ha detectado una mutación de tipo "Virus".')
             case 0:print("No se ha detectadio ninguna mutación.")
-        break
-    elif opcion == "M":
         
-        break
+    elif opcion == "M":
+        pass
+        
     elif opcion == "S":
+        sanador = Sanador()
+        matriz_ADN = sanador.sanar_mutantes(matriz_ADN,detector)
+        print("Nueva Matriz de ADN:")
+        for i in range(len(matriz_ADN)):
+            print("\t".join(matriz_ADN[i]))
+    elif opcion == "Q":
         break
+        
     else:
         print("Opción inválida")
+        
+    print("""Que desea hacer con ésta cadena: 
+      Detectar Mutacion Escriba \"D\"
+      Mutar Cadena de ADN Escriba \"M\"
+      Sanar Cadena de ADN(Debe estar mutado) \"S\"
+      Salir \"Q\"
+      """)
+print("Gracias por usar Laboratorio de ADN :)")
+time.sleep(1.2)
