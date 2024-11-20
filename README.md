@@ -9,7 +9,7 @@ Este proyecto simula un laboratorio donde los usuarios pueden ingresar una caden
 - **Integrante 3**: Enzo Severino
 - **Integrante 4**: Jeronimo Zuñiga
 
-## 3. Introducción de la cadena de ADN
+## Introducción de la cadena de ADN
 
 Al ejecutar el programa, se pedirá que ingrese una cadena de ADN. La cadena debe cumplir con los siguientes requisitos:
 
@@ -24,7 +24,7 @@ GTACGT CTGATA AGGCAG GCATCG TGAGCG GCTACT
 
 Si la cadena no cumple con estos requisitos, el programa solicitará que la ingreses nuevamente, indicando el error cometido (como caracteres no válidos o un número incorrecto de cadenas).
 
-## 4. Opciones disponibles
+## Opciones disponibles
 
 Después de ingresar una cadena de ADN válida, el programa te ofrecerá un menú de opciones para que puedas interactuar con la cadena de ADN. Las opciones disponibles son las siguientes:
 
